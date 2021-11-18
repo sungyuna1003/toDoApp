@@ -200,13 +200,12 @@ app.post('/chatroom', 로그인했니, function (요청, 응답) {
     
 
 });
-app.get('/chat', 로그인했니, function (요청, 응답) {
 
-    db.collection('chatroom').find({ member: 요청.user._id }).toArray().then((result) => {
-        console.log(result);
-        res.render('chat.ejs', { data: result })
+app.get('/chat', 로그인했니, function (req, res) {
+
+    db.collection('chatroom').find({ member: req.user._id }).toArray().then((result) => {
+        res.render('chat.ejs', { data: result})
     })
-
 });
 
 
