@@ -194,8 +194,8 @@ app.post('/chatroom', 로그인했니, function (요청, 응답) {
         date: new Date()
     }
 
-    db.collection('chatroom').insertOne().then((결과) => {
-        res.send('채팅성공');
+    db.collection('chatroom').insertOne(저장할거).then((결과) => {
+        응답.send('채팅성공');
     })
     
 
