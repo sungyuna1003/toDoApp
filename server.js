@@ -208,6 +208,39 @@ app.get('/chat', 로그인했니, function (req, res) {
     })
 });
 
+app.post('/message', 로그인했니, function (req, res) {
+    var 저장할거 = {
+        parent: req.body.parent,
+        content: req.body.content,
+        userid: req.user._id,
+        date : new Date(),
+    }
+    db.collection('message').insertOne(저장할거).then(() => {
+        console.log('DB 저장성공');
+        res.send('DB 저장성공')
+    }).catch(() => {
+        console.log('DB 실패');
+    })
+});
+
+
+app.get('/message/:id', 로그인했니, function (요청, 응답) {
+
+    응답.writeHead(200, {
+        "Connection": "keep-alive",
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+    });
+    db.collection('message').find({ parent: '요청.params.id' }).toArray()
+        .then((결과) => {
+        응답.write('event: test\n');
+        응답.write('data: ' + JSON.stringify(결과) +'\n\n');
+    })
+
+
+});
+
+
 
 // 어떤 사람이 / add 경로로 post 요청을하면
 // 데이터 2개(날짜,제목)을 보내주는데,
