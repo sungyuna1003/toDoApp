@@ -236,8 +236,6 @@ app.get('/message/:id', 로그인했니, function (요청, 응답) {
         응답.write('event: test\n');
         응답.write('data: ' + JSON.stringify(결과) +'\n\n');
     })
-
-
 });
 
 
