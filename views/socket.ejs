@@ -16,18 +16,26 @@
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" 
     crossorigin="anonymous"></script> -->
 
-       <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
-    crossorigin="anonymous"></script>
+
 
     <title>Hello, world!</title>
   </head>
   <body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js"></script>
 
-    <div>chatting Room</div>
+    <div>채팅방</div>
+    <input id="input1">
+    <button id="send">서버로 메세지보내기</button>
 
-
+    <script>
+        var socket = io();
+        $('#send').click(function(){
+            socket.emit('user-send',$('#input1').val())
+        })
+    </script>
     
     <!-- Optional JavaScript -->
    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
