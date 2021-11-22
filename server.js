@@ -1,5 +1,11 @@
 const express = require('express');
 const app = express();
+
+const http = require('http').createServer(app);
+const { Server } = require('socket.io');
+const io = new Server(http);
+
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -30,7 +36,7 @@ MongoClient.connect('mongodb+srv://sungyuna1003:test1234!@cluster0.muyy0.mongodb
         //     console.log('저장완료');
         // });
 
-        app.listen('8080', function () {
+        http.listen('8080', function () {
         console.log('listening on 8080~~')
     });
 })
