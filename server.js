@@ -338,6 +338,16 @@ app.get('/socket', function (req, res) {
 })
 io.on('connection', function(socket) {
     console.log('접속됨')
+
+
+    socket.on('room1-send', function (data) {
+        socket.to().emit('broadcast', data);
+    })
+
+    socket.on('joinroom', function (data) {
+        socket.join('room1');
+    })
+
     socket.on('user-send', function(data) {
         io.to(socekt.id).emit('broadcast', data)
     })

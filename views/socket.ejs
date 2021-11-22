@@ -30,9 +30,22 @@
     <input id="input1">
     <div id="content"></div>
     <button id="send">서버로 메세지보내기</button>
+    <button id="room1">채팅방1 입장</button>
+    <button id="room1-send">채팅방1에서 메세지보내기</button>
 
     <script>
         var socket = io();
+
+         $('#room1-send').click(function(){
+          socket.emit('room1-send', 'hello chatting 1 room')
+        })
+
+
+        $('#room1').click(function(){
+          socket.emit('joinroom', 'join to chatting room')
+        })
+
+
         $('#send').click(function(){
             socket.emit('user-send',$('#input1').val())
         });
