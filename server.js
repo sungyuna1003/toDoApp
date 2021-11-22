@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 const http = require('http').createServer(app);
-const { Server } = require('socket.io');
+const { Server } = require("socket.io");
 const io = new Server(http);
 
 
@@ -333,3 +333,6 @@ app.get('./image/:imageName', function (req, res) {
     res.sendFile(__dirname + '/public/image' + req.params.imageName)
 })
 
+app.get('/socket', function (req, res) {
+    res.render('socket.ejs')
+})
