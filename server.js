@@ -339,6 +339,6 @@ app.get('/socket', function (req, res) {
 io.on('connection', function(socket) {
     console.log('접속됨')
     socket.on('user-send', function(data) {
-        console.log(data);
+        io.emit('broadcast', data)
     })
 })
